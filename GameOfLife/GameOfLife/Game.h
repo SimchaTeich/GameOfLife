@@ -14,8 +14,8 @@ class Game
 {
 private:
 	bool _done;
-	Cell* _board[WIGTH];
-	bool* _tableOfChanges[WIGTH];
+	Cell* _board[HEIGHT];
+	bool* _tableOfChanges[HEIGHT];
 	set<Cordinta> _initCoordinates;
 
 	void initBoard();
