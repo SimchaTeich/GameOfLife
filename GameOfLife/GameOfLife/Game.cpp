@@ -1,5 +1,7 @@
 #include "Game.h"
 #include <iostream>
+#include <thread>
+#include <chrono>
 
 using std::cout;
 using std::endl;
@@ -77,6 +79,10 @@ void Game::checkForChanges()
 			{
 				if (numOfNeighbor == 2 || numOfNeighbor == 3)
 				{
+					this->_tableOfChanges[i][j] = false;
+				}
+				else
+				{
 					this->_tableOfChanges[i][j] = true;
 					this->_done = false;
 				}
@@ -87,6 +93,10 @@ void Game::checkForChanges()
 				{
 					this->_tableOfChanges[i][j] = true;
 					this->_done = false;
+				}
+				else
+				{
+					this->_tableOfChanges[i][j] = false;
 				}
 			}
 		}
@@ -115,6 +125,7 @@ void Game::runGeneration()
 	}
 }
 
+
 Game::Game(const vector<Cordinta>& initCoordinates)
 {
 	this->_done = false;
@@ -132,14 +143,23 @@ void Game::start()
 {
 	initBoard();
 
-	printBoard();
 
-	for (int i = 0; i < HEIGHT; i++)
-	{
-		for (int j = 0; j < WIDTH; j++)
+	while(true)
+	{	
+		system("CLS");
+		printBoard();
+		checkForChanges();
+		
+		if (!this->_done)
 		{
-			cout << "num of neigbors of _board[" << i << "][" << j << "] = " << getNumOfNeighbors(Cordinta(i, j)) << endl;
+			this->_done = true;
+			runGeneration();
+			
+			std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		}
+		else
+		{
+			break;
 		}
 	}
-
 }

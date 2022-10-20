@@ -15,5 +15,5 @@ void Cell::revive()
 
 void Cell::kill()
 {
-	this->_isAlive = true;
+	this->_isAlive = false;
 }

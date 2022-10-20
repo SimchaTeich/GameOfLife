@@ -62,6 +62,12 @@ private:
 
 public:
 	Game(const vector<Cordinta>& initCoordinates);
+	
+	/*
+	* starts the game loops.
+	* Input - None.
+	* Output - None.
+	*/
 	void start();
 };
 
