@@ -6,7 +6,7 @@
 #include "Cordinta.h"
 
 #define HEIGHT 6
-#define WIGTH 6
+#define WIDTH 6
 
 using std::set;
 
@@ -28,6 +28,11 @@ private:
 	*/
 	void initBoard();
 
+	/*
+	* prints the board according to _board.
+	* Input - None.
+	* Output - None.
+	*/
 	void printBoard() const;
 	int getNumOfNeighbors(const Cordinta& c) const;
 	void checkForChanges();
