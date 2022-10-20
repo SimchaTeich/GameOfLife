@@ -2,6 +2,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <windows.h>   // WinApi header for color.
 
 using std::cout;
 using std::endl;
@@ -16,8 +17,14 @@ void Game::initBoard()
 }
 
 
+/*
+* credit for color:
+* https://stackoverflow.com/questions/4053837/colorizing-text-in-the-console-with-c
+*/
 void Game::printBoard() const
 {
+	HANDLE hConsole;
+
 	for (int i = 0; i < HEIGHT; i++)
 	{
 		cout << "+";
@@ -29,7 +36,19 @@ void Game::printBoard() const
 
 		for (int j = 0; j < WIDTH; j++)
 		{
-			cout << "| " << (this->_board[i][j].isAlive() ? "*" : " ") << " ";
+			cout << "| ";
+			if (this->_board[i][j].isAlive())
+			{
+				hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+				SetConsoleTextAttribute(hConsole, 4); // red
+				cout << "@";
+				SetConsoleTextAttribute(hConsole, 7);  // regular
+			}
+			else
+			{
+				cout << " ";
+			}
+			cout << " ";
 		}
 		cout << "|";
 		cout << endl;
@@ -155,7 +174,7 @@ void Game::start()
 			this->_done = true;
 			runGeneration();
 			
-			std::this_thread::sleep_for(std::chrono::milliseconds(500));
+			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		}
 		else
 		{

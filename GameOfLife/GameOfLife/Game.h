@@ -5,8 +5,8 @@
 #include "Cell.h"
 #include "Cordinta.h"
 
-#define HEIGHT 5
-#define WIDTH 5
+#define HEIGHT 18
+#define WIDTH 11
 
 using std::vector;
 
