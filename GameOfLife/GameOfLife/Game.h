@@ -41,6 +41,14 @@ private:
 	* Output - the result of calc abouv.
 	*/
 	int getNumOfNeighbors(const Cordinta& c) const;
+	
+	/*
+	* over all the cells and update the 
+	* tableOfChange about cells will change
+	* there modes (live of not) in the next generation.
+	* Input - None.
+	* Output - None.
+	*/
 	void checkForChanges();
 	void runGeneration();
 

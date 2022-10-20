@@ -65,6 +65,34 @@ int Game::getNumOfNeighbors(const Cordinta& c) const
 	return this->_board[line][column].isAlive() ? count - 1 : count;
 }
 
+void Game::checkForChanges()
+{
+	for (int i = 0; i < HEIGHT; i++)
+	{
+		for (int j = 0; j < WIDTH; j++)
+		{
+			int numOfNeighbor = getNumOfNeighbors(Cordinta(i, j));
+
+			if (this->_board[i][j].isAlive())
+			{
+				if (numOfNeighbor == 2 || numOfNeighbor == 3)
+				{
+					this->_tableOfChanges[i][j] = true;
+					this->_done = false;
+				}
+			}
+			else
+			{
+				if (numOfNeighbor == 3)
+				{
+					this->_tableOfChanges[i][j] = true;
+					this->_done = false;
+				}
+			}
+		}
+	}
+}
+
 Game::Game(const vector<Cordinta>& initCoordinates)
 {
 	this->_done = false;
