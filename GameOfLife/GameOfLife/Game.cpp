@@ -93,6 +93,28 @@ void Game::checkForChanges()
 	}
 }
 
+
+void Game::runGeneration()
+{
+	for (int i = 0; i < HEIGHT; i++)
+	{
+		for (int j = 0; j < WIDTH; j++)
+		{
+			if (this->_tableOfChanges[i][j])
+			{
+				if (this->_board[i][j].isAlive())
+				{
+					this->_board[i][j].kill();
+				}
+				else
+				{
+					this->_board[i][j].revive();
+				}
+			}
+		}
+	}
+}
+
 Game::Game(const vector<Cordinta>& initCoordinates)
 {
 	this->_done = false;

@@ -50,6 +50,14 @@ private:
 	* Output - None.
 	*/
 	void checkForChanges();
+
+	/*
+	* go to the next generation.
+	* so kill and revive cells
+	* according to the tableOfChanges.
+	* Input - None.
+	* Output - None.
+	*/
 	void runGeneration();
 
 public:
