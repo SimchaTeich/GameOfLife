@@ -10,6 +10,7 @@
 #define PULSAR 4
 #define PENTE_DECATHLON 5
 #define GLIDER 6
+#define LIGHT_WEIGHT_SPACESHIP 7
 
 using std::cout;
 using std::endl;
@@ -24,6 +25,7 @@ void beacon();
 void pulsar();
 void penteDecathlon();
 void glider();
+void lightWeightSpaceship();
 
 
 int main()
@@ -53,6 +55,7 @@ void menu()
 		cout << "4. Pulsar" << endl;
 		cout << "5. Pente-decathlon" << endl;
 		cout << "6. Glider" << endl;
+		cout << "7. light-weight spaceship" << endl;
 
 		cout << "Enter your choice: ";
 		cin >> input;
@@ -88,6 +91,10 @@ void menu()
 
 		case GLIDER:
 			glider();
+			break;
+
+		case LIGHT_WEIGHT_SPACESHIP:
+			lightWeightSpaceship();
 			break;
 		
 		default:
@@ -228,5 +235,23 @@ void glider()
 	initCoordinates.push_back(Cordinta(2, 2));
 
 	Game g(20, 20, initCoordinates);
+	g.start();
+}
+
+
+void lightWeightSpaceship()
+{
+	vector<Cordinta> initCoordinates;
+	initCoordinates.push_back(Cordinta(1, 1));
+	initCoordinates.push_back(Cordinta(1, 4));
+	initCoordinates.push_back(Cordinta(2, 5));
+	initCoordinates.push_back(Cordinta(3, 1));
+	initCoordinates.push_back(Cordinta(3, 5));
+	initCoordinates.push_back(Cordinta(4, 2));
+	initCoordinates.push_back(Cordinta(4, 3));
+	initCoordinates.push_back(Cordinta(4, 4));
+	initCoordinates.push_back(Cordinta(4, 5));
+
+	Game g(7, 40, initCoordinates);
 	g.start();
 }
