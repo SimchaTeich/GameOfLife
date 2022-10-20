@@ -18,7 +18,16 @@ private:
 	bool* _tableOfChanges[HEIGHT];
 	set<Cordinta> _initCoordinates;
 
+	/*
+	* init the _board according
+	* to the _initCoordinates.
+	* so every cordinta in _initCoordinates
+	* will revive the correct cell at the _board.
+	* Input - None.
+	* Output - None.
+	*/
 	void initBoard();
+
 	void printBoard() const;
 	int getNumOfNeighbors(const Cordinta& c) const;
 	void checkForChanges();

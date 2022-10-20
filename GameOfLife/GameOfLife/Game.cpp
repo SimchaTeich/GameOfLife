@@ -1,5 +1,14 @@
 #include "Game.h"
 
+void Game::initBoard()
+{
+	for (auto it = this->_initCoordinates.begin(); it != this->_initCoordinates.end(); it++)
+	{
+		this->_board[it->getX()][it->getY()].revive();
+	}
+}
+
+
 Game::Game(set<Cordinta> initCoordinates)
 {
 	this->_done = false;
