@@ -37,7 +37,7 @@ private:
 	
 	/*
 	* calc the number of living neighbors of cell.
-	* Input - Cordinta of living cell.
+	* Input - Cordinta of a valid cell.
 	* Output - the result of calc abouv.
 	*/
 	int getNumOfNeighbors(const Cordinta& c) const;

@@ -55,15 +55,14 @@ int Game::getNumOfNeighbors(const Cordinta& c) const
 		for (int j = column - 1; j <= column + 1; j++)
 		{
 			// Avoiding going out of bounds of the board.
-			try
-			{
-				this->_board[i][j].isAlive() ? count++ : NULL;
-			}
-			catch(...){}
+			if (i < 0 || j < 0 || i >= HEIGHT || j >= WIDTH) { continue; }
+
+			this->_board[i][j].isAlive() ? count++ : NULL;
 		}
 	}
 
-	return count - 1; // because calc include the cell himself.
+	// because count include the cell himself.
+	return this->_board[line][column].isAlive() ? count - 1 : count;
 }
 
 Game::Game(const vector<Cordinta>& initCoordinates)
@@ -84,4 +83,13 @@ void Game::start()
 	initBoard();
 
 	printBoard();
+
+	for (int i = 0; i < HEIGHT; i++)
+	{
+		for (int j = 0; j < WIDTH; j++)
+		{
+			cout << "num of neigbors of _board[" << i << "][" << j << "] = " << getNumOfNeighbors(Cordinta(i, j)) << endl;
+		}
+	}
+
 }
