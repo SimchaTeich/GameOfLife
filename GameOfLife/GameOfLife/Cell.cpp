@@ -17,5 +17,3 @@ void Cell::kill()
 {
 	this->_isAlive = true;
 }
-
-
