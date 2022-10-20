@@ -40,7 +40,7 @@ void Game::printBoard() const
 			if (this->_board[i][j].isAlive())
 			{
 				hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-				SetConsoleTextAttribute(hConsole, 4); // red
+				SetConsoleTextAttribute(hConsole, 4);  // red
 				cout << "@";
 				SetConsoleTextAttribute(hConsole, 7);  // regular
 			}
@@ -85,6 +85,7 @@ int Game::getNumOfNeighbors(const Cordinta& c) const
 	// because count include the cell himself.
 	return this->_board[line][column].isAlive() ? count - 1 : count;
 }
+
 
 void Game::checkForChanges()
 {
