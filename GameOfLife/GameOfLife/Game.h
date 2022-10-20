@@ -5,16 +5,13 @@
 #include "Cell.h"
 #include "Cordinta.h"
 
-//#define HEIGHT 18
-//#define WIDTH 11
-
 using std::vector;
 
 class Game
 {
 private:
-	int HEIGHT;
-	int WIDTH;
+	int _height;
+	int _width;
 	bool _done;
 	Cell** _board;
 	bool** _tableOfChanges;

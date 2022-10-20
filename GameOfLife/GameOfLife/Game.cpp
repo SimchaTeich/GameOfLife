@@ -25,16 +25,16 @@ void Game::printBoard() const
 {
 	HANDLE hConsole;
 
-	for (int i = 0; i < HEIGHT; i++)
+	for (int i = 0; i < this->_height; i++)
 	{
 		cout << "+";
-		for (int j = 0; j < WIDTH; j++)
+		for (int j = 0; j < this->_width; j++)
 		{
 			cout << "---+";
 		}
 		cout << endl;
 
-		for (int j = 0; j < WIDTH; j++)
+		for (int j = 0; j < this->_width; j++)
 		{
 			cout << "| ";
 			if (this->_board[i][j].isAlive())
@@ -56,7 +56,7 @@ void Game::printBoard() const
 
 	// print the bottom line of the frame.
 	cout << "+";
-	for (int j = 0; j < WIDTH; j++)
+	for (int j = 0; j < this->_width; j++)
 	{
 		cout << "---+";
 	}
@@ -76,7 +76,7 @@ int Game::getNumOfNeighbors(const Cordinta& c) const
 		for (int j = column - 1; j <= column + 1; j++)
 		{
 			// Avoiding going out of bounds of the board.
-			if (i < 0 || j < 0 || i >= HEIGHT || j >= WIDTH) { continue; }
+			if (i < 0 || j < 0 || i >= this->_height || j >= this->_width) { continue; }
 
 			this->_board[i][j].isAlive() ? count++ : NULL;
 		}
@@ -89,9 +89,9 @@ int Game::getNumOfNeighbors(const Cordinta& c) const
 
 void Game::checkForChanges()
 {
-	for (int i = 0; i < HEIGHT; i++)
+	for (int i = 0; i < this->_height; i++)
 	{
-		for (int j = 0; j < WIDTH; j++)
+		for (int j = 0; j < this->_width; j++)
 		{
 			int numOfNeighbor = getNumOfNeighbors(Cordinta(i, j));
 
@@ -126,9 +126,9 @@ void Game::checkForChanges()
 
 void Game::runGeneration()
 {
-	for (int i = 0; i < HEIGHT; i++)
+	for (int i = 0; i < this->_height; i++)
 	{
-		for (int j = 0; j < WIDTH; j++)
+		for (int j = 0; j < this->_width; j++)
 		{
 			if (this->_tableOfChanges[i][j])
 			{
@@ -148,17 +148,17 @@ void Game::runGeneration()
 
 Game::Game(int height, int width, const vector<Cordinta>& initCoordinates)
 {
-	this->HEIGHT = height;
-	this->WIDTH = width;
+	this->_height = height;
+	this->_width = width;
 	this->_done = false;
 	this->_initCoordinates = initCoordinates;
 	
-	this->_board = new Cell * [HEIGHT];
-	this->_tableOfChanges = new bool* [HEIGHT];
-	for (int i = 0; i < HEIGHT; i++)
+	this->_board = new Cell * [this->_height];
+	this->_tableOfChanges = new bool* [this->_height];
+	for (int i = 0; i < this->_height; i++)
 	{
-		this->_board[i] = new Cell[WIDTH];
-		this->_tableOfChanges[i] = new bool[WIDTH];
+		this->_board[i] = new Cell[this->_width];
+		this->_tableOfChanges[i] = new bool[this->_width];
 	}
 }
 
