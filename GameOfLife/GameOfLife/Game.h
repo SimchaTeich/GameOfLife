@@ -1,14 +1,14 @@
 #ifndef _GAME_H_
 #define _GAME_H_
 
-#include <set>
+#include <vector>
 #include "Cell.h"
 #include "Cordinta.h"
 
-#define HEIGHT 6
-#define WIDTH 6
+#define HEIGHT 5
+#define WIDTH 5
 
-using std::set;
+using std::vector;
 
 class Game
 {
@@ -16,7 +16,7 @@ private:
 	bool _done;
 	Cell* _board[HEIGHT];
 	bool* _tableOfChanges[HEIGHT];
-	set<Cordinta> _initCoordinates;
+	vector<Cordinta> _initCoordinates;
 
 	/*
 	* init the _board according
@@ -39,7 +39,7 @@ private:
 	void runGeneration();
 
 public:
-	Game(set<Cordinta> initCoordinates);
+	Game(const vector<Cordinta>& initCoordinates);
 	void start();
 };
 

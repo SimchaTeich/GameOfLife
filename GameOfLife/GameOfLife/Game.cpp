@@ -25,10 +25,11 @@ void Game::printBoard() const
 		}
 		cout << endl;
 
-		for (int j = 0; j <= WIDTH; j++)
+		for (int j = 0; j < WIDTH; j++)
 		{
 			cout << "| " << (this->_board[i][j].isAlive() ? "*" : " ") << " ";
 		}
+		cout << "|";
 		cout << endl;
 	}
 
@@ -41,7 +42,7 @@ void Game::printBoard() const
 	cout << endl;
 }
 
-Game::Game(set<Cordinta> initCoordinates)
+Game::Game(const vector<Cordinta>& initCoordinates)
 {
 	this->_done = false;
 	this->_initCoordinates = initCoordinates;
@@ -51,4 +52,11 @@ Game::Game(set<Cordinta> initCoordinates)
 		this->_board[i] = new Cell[WIDTH];
 		this->_tableOfChanges[i] = new bool[WIDTH];
 	}
+}
+
+void Game::start()
+{
+	initBoard();
+
+	printBoard();
 }
