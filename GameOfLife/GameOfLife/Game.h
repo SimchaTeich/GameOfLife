@@ -5,17 +5,19 @@
 #include "Cell.h"
 #include "Cordinta.h"
 
-#define HEIGHT 18
-#define WIDTH 11
+//#define HEIGHT 18
+//#define WIDTH 11
 
 using std::vector;
 
 class Game
 {
 private:
+	int HEIGHT;
+	int WIDTH;
 	bool _done;
-	Cell* _board[HEIGHT];
-	bool* _tableOfChanges[HEIGHT];
+	Cell** _board;
+	bool** _tableOfChanges;
 	vector<Cordinta> _initCoordinates;
 
 	/*
@@ -61,7 +63,7 @@ private:
 	void runGeneration();
 
 public:
-	Game(const vector<Cordinta>& initCoordinates);
+	Game(int height, int width, const vector<Cordinta>& initCoordinates);
 	
 	/*
 	* starts the game loops.

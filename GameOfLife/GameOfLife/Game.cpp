@@ -146,11 +146,15 @@ void Game::runGeneration()
 }
 
 
-Game::Game(const vector<Cordinta>& initCoordinates)
+Game::Game(int height, int width, const vector<Cordinta>& initCoordinates)
 {
+	this->HEIGHT = height;
+	this->WIDTH = width;
 	this->_done = false;
 	this->_initCoordinates = initCoordinates;
 	
+	this->_board = new Cell * [HEIGHT];
+	this->_tableOfChanges = new bool* [HEIGHT];
 	for (int i = 0; i < HEIGHT; i++)
 	{
 		this->_board[i] = new Cell[WIDTH];
@@ -162,8 +166,7 @@ Game::Game(const vector<Cordinta>& initCoordinates)
 void Game::start()
 {
 	initBoard();
-
-
+	
 	while(true)
 	{	
 		system("CLS");
