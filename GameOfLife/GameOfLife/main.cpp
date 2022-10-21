@@ -60,6 +60,7 @@ void menu()
 		cout << "Enter your choice: ";
 		cin >> input;
 
+		// agains malicious input
 		try
 		{
 			option = std::stoi(input);
